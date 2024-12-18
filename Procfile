@@ -1,1 +1,1 @@
-"web: gunicorn ethics_site.wsgi:application" 
+web: gunicorn ethics_site.wsgi:application
