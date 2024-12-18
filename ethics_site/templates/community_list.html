@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Community{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Community Discussions</h1>
+
+    <!-- Categories Filter -->
+    <div class="mb-3">
+        <strong>Categories:</strong>
+        <a href="?">All</a>
+        {% for category in categories %}
+            | <a href="?category={{ category.name }}">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Posts -->
+    {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Category: {{ post.category.name }}</h6>
+                <p class="card-text">{{ post.content }}</p>
+                <small>Posted by {{ post.author }} on {{ post.date_posted }}</small>
+            </div>
+        </div>
+    {% empty %}
+        <p>No posts yet. <a href="{% url 'add_post' %}">Be the first to post!</a></p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Videos - Ethics in Tech{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">AI and Ethics Videos</h1>
+    <div class="row">
+        {% for video in videos %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <iframe class="card-img-top" src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text">{{ video.description }}</p>
+                        <p class="text-muted">Published on: {{ video.date_published|date:"M d, Y" }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No videos available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
