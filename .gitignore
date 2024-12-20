@@ -9,6 +9,8 @@ __pycache__/
 
 # Local database
 db.sqlite3
+db_backup.sqlite3
+
 
 # Static files
 staticfiles/
