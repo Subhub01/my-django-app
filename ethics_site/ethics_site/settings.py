@@ -33,7 +33,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-2h0aot0b*a4kvo58ubk_gzvx_j
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['ethicsapp-c1b70e787109.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['your-render-app.onrender.com', '127.0.0.1']
+
 
 
 # Application definition
@@ -88,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+        'default': dj_database_url.config(conn_max_age=600)
     }
 }
 
@@ -128,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
